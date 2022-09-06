@@ -2,8 +2,8 @@ import ContactForm from './ContactForm';
 import Filter from './Filter';
 import ContactList from './ContactList';
 import styled from 'styled-components';
-import { toast } from 'react-hot-toast';
-import { Toaster } from 'react-hot-toast';
+import toast, { Toaster }  from 'react-hot-toast';
+
 
 import { useSelector, useDispatch } from 'react-redux';
 import { addContact, removeContact } from 'redux/contacts/contacts-actions';
@@ -13,10 +13,8 @@ import { getFilter } from 'redux/filter/filter-selector';
 
 
 export default function Phonebook() {
-  const contacts = useSelector(getFilterContact);
-  
+  const contacts = useSelector(getFilterContact);  
   const filter = useSelector(getFilter);
-
   const dispatch = useDispatch();
 
   const onAddContact = (payload) => {
@@ -27,7 +25,6 @@ export default function Phonebook() {
         return;
     };
     const action = addContact(payload);
-
     dispatch(action)
   };
 
