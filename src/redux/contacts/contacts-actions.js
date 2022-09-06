@@ -1,19 +1,41 @@
+import { createAction } from '@reduxjs/toolkit';
 import shortid from 'shortid';
-import { ADD_CONTACT, REMOVE_CONTACT } from './contacts-types';
+// import { ADD_CONTACT, REMOVE_CONTACT } from './contacts-types';
 
-export const addContact = payload => {
+export const addContact = createAction('contacts/add', data => {
   return {
-    type: ADD_CONTACT,
     payload: {
+      ...data,
       id: shortid(),
-      ...payload,
     },
   };
-};
+});
+export const removeContact = createAction('contact/remove');
 
-export const removeContact = payload => {
-  return {
-    type: REMOVE_CONTACT,
-    payload,
-  };
-};
+// -----------  For example  -------------
+// const createAction = (type) => {
+//   const function (payload) => {
+//   return {
+//     type,
+//     payload,
+//     }
+// };
+//    return function;
+// }
+
+// export const addContact = payload => {
+//   return {
+//     type: ADD_CONTACT,
+//     payload: {
+//       id: shortid(),
+//       ...payload,
+//     },
+//   };
+// };
+
+// export const removeContact = payload => {
+//   return {
+//     type: REMOVE_CONTACT,
+//     payload,
+//   };
+// };
